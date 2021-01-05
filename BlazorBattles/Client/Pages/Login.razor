@@ -8,22 +8,18 @@ else
 {
     <h3>Login</h3>
 
-    <EditForm Model="@user" OnInvalidSubmit="HandleLogin">
+    <EditForm Model="@user" OnValidSubmit="HandleLogin">
         <DataAnnotationsValidator />
-        <p>
-            <label>Username</label>
-            <div>
-                <InputText id="username" @bind-Value="user.Username"></InputText>
-            </div>
-        </p>
-        <p>
-            <label>Password</label>
-            <div>
-                <InputText id="password" type="password" @bind-Value="user.Password"></InputText>
-            </div>
-        </p>
+        <div class="form-group">
+            <label for="email">Username</label>
+            <InputText id="username" @bind-Value="user.Username" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="email">Password</label>
+            <InputText id="password" @bind-Value="user.Password" type="password" class="form-control" />
+        </div>
         <button type="submit" class="btn btn-primary">Login</button>
-       <ValidationSummary/>
+        <ValidationSummary />
     </EditForm>
 }
 
