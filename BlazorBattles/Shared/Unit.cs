@@ -12,6 +12,5 @@ namespace BlazorBattles.Shared
         public int Defence { get; set; }
         public int HitPoints { get; set; } = 100;
         public int BananaCost { get; set; }
-
     }
 }
