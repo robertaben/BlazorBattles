@@ -8,24 +8,25 @@
 <h3>Build</h3>
 
 <div class="form-group">
-    <select @bind="selectedUntId" class="form-control">
-        @foreach (var unit in UnitService.Units)
-        {
-            <option value="@unit.Id">@unit.Title // @unit.BananaCost Bananas</option>
-        }
-    </select>
+<select @bind="selectedUntId" class="form-control">
+    @foreach (var unit in UnitService.Units)
+    {
+        <option value="@unit.Id">@unit.Title // @unit.BananaCost Bananas</option>
+    }
+</select>
 </div>
 
 <button class="btn btn-primary" @onclick="BuildUnit">Build</button>
 
 @if(needMoreBananas)
 {
-    <div class="validation-message">
-        Not enough bananas! :(
-    </div>
+<div class="validation-message">
+    Not enough bananas! :(
+</div>
 }
 
 @code {
+
     int selectedUntId = 1;
     bool needMoreBananas;
 
@@ -43,6 +44,11 @@
         needMoreBananas = false;
         BananaService.EatBananas(selectedUnit.BananaCost);
         UnitService.AddUnit(selectedUntId);
-
     }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await UnitService.LoadUnitsAsync();
+    }
+
 }
