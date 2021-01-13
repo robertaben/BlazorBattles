@@ -29,7 +29,7 @@ Please Login below or <NavLink href="register">register</NavLink> for a new acco
 
         if(result.Success)
         {
-            await LocalStorage.SetItemAsync<bool>("isAuthenticated", true);
+            await LocalStorage.SetItemAsync<string>("authToken", result.Data);
             await AuthStateProvider.GetAuthenticationStateAsync();
         }
         else
